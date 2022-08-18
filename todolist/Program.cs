@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using todolist.Data;
+using todolist.Data.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<todolistContext>(options =>
@@ -9,6 +10,8 @@ builder.Services.AddDbContext<todolistContext>(options =>
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IToDoTaskRepository, ToDoTaskRepository>();
 
 var app = builder.Build();
 

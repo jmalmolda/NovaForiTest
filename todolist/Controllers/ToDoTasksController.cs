@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using todolist.Data;
+using todolist.Data.Repository;
 using todolist.Models;
 
 namespace todolist.Controllers
@@ -14,22 +15,18 @@ namespace todolist.Controllers
     [ApiController]
     public class ToDoTasksController : ControllerBase
     {
-        private readonly todolistContext _context;
+        private readonly IToDoTaskRepository repository;
 
-        public ToDoTasksController(todolistContext context)
+        public ToDoTasksController(IToDoTaskRepository repository)
         {
-            _context = context;
+            this.repository = repository;
         }
 
         // GET: api/ToDoTasks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ToDoTask>>> GetToDoTask()
+        public async Task<ActionResult<IEnumerable<ToDoTask>>> GetToDoTasks()
         {
-          if (_context.ToDoTask == null)
-          {
-              return NotFound();
-          }
-            return await _context.ToDoTask.ToListAsync();
+            return await repository.GetTasks();
         }
     }
 }
