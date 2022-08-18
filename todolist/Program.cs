@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using todolist.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<todolistContext>(options =>
+    options.UseInMemoryDatabase("ToDoListDatabase"));
 
 // Add services to the container.
 
