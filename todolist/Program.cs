@@ -11,6 +11,13 @@ builder.Services.AddDbContext<todolistContext>(options =>
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddCors(opt => opt.AddPolicy("CorsPolicy", c =>
+{
+    c.AllowAnyOrigin()
+       .AllowAnyHeader()
+       .AllowAnyMethod();
+}));
+
 builder.Services.AddTransient<IToDoTaskRepository, ToDoTaskRepository>();
 
 var app = builder.Build();
