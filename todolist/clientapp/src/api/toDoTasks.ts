@@ -24,7 +24,7 @@ export const createNewTask = async (description: string): Promise<ToDoTask> => {
         description: description,
         state: State.Pending
     };
-    const response = await fetch(`https://localhost:7042/api/ToDoTasks`, {
+    const response = await fetch(`${config.api.baseUrl}/api/ToDoTasks`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(toDoTask)
