@@ -4,7 +4,7 @@ To do this I spend 3 hours and 30 mins approximately.
 ### How to run the solution
 In a machine with .NET core 6 installed open the solution file located in:
 ```
-/todolist/todolist.sln
+/NovaForiTest/todolist/todolist.sln
 ```
 with Visual Studio and run the project with `F5`
 All the NuGet and node dependencies will be imported and compiled and the project will run the API backend and the react frontend.
@@ -19,3 +19,4 @@ I haven't created a generic repository class because for this exercise we only h
 For the frontend I am using React with typescript, using functional components with hooks to manage the state, and basic `fetch` to make the API calls, to keep the dependencies at minimum.
 For the purpose of the exercise I didn't think it was necessary to use the Context API to manage the state between components, but it would be useful once we have a few properties that are shared between components to avoid passing too many properties.
 I feel this simple backend plus frontend project served by .NET is the best approach for this simple exercise, without limiting the possibility of improving it in case this became a real life project.
+
