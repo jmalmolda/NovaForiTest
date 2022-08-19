@@ -1,4 +1,5 @@
-﻿namespace todolist.Models
+﻿
+namespace todolist.Models
 {
     public enum StateEnum
     {

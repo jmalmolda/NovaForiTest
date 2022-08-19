@@ -1,13 +1,13 @@
 ﻿import { FC  } from 'react'
-import { ToDoTask } from '../../api/toDoTasks';
+import { State, ToDoTask } from '../../api/toDoTasks';
 
 interface ToDoListProps {
   taskList: ToDoTask[]
 }
   
 const ToDoList: FC<ToDoListProps> = ({taskList}) => {
-  const pendingTasks = taskList.filter(task => task.state === 'Pending')
-  const completedTasks = taskList.filter(task => task.state === 'Completed')
+  const pendingTasks = taskList.filter(task => task.state === State.Pending)
+  const completedTasks = taskList.filter(task => task.state === State.Completed)
   return (
     <>
       <h2>Pending</h2>

@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { fetchAllTasks, ToDoTask } from '../../api/toDoTasks';
+import NewTaskForm from '../NewTaskForm/NewTaskForm';
 import ToDoList from '../ToDoList/ToDoList';
 
 const ToDoScreen: FC = () => {
@@ -17,6 +18,7 @@ const ToDoScreen: FC = () => {
     return (
         <div className="container">
           <h1>To Do tasks</h1>
+          <NewTaskForm/>
           <ToDoList taskList={taskList}/>
         </div>
     )

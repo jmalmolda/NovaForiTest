@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import ToDoList from './ToDoList'
-import { ToDoTask } from '../../api/toDoTasks'
+import { State, ToDoTask } from '../../api/toDoTasks'
 
 test('renders empty task lists', () => {
   render(<ToDoList taskList={[]}/>)
@@ -17,12 +17,12 @@ test('renders full task lists', () => {
   const toDoTask1: ToDoTask = {
     id: '1',
     description: 'task pending',
-    state: 'Pending'
+    state: State.Pending
   };
   const toDoTask2: ToDoTask = {
       id: '1',
       description: 'task completed',
-      state: 'Completed'
+      state: State.Completed
   }
   render(<ToDoList taskList={[toDoTask1, toDoTask2]}/>)
   

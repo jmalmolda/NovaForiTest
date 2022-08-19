@@ -13,9 +13,11 @@ namespace todolist.Data.Repository
             this.context = context;
         }
 
-        public Task<ToDoTask> CreateTask(ToDoTask task)
+        public async Task<ToDoTask> CreateTask(ToDoTask task)
         {
-            throw new NotImplementedException();
+            context.ToDoTask.Add(task);
+            await context.SaveChangesAsync();
+            return task;
         }
 
         public async Task<List<ToDoTask>> GetTasks()
