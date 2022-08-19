@@ -28,5 +28,15 @@ namespace todolist.Controllers
         {
             return await repository.GetTasks();
         }
+
+        // POST: api/ToDoTasks
+        [HttpPost]
+        public async Task<ActionResult<ToDoTask>> PostToDoTask(ToDoTask toDoTask)
+        {
+            toDoTask.Description = toDoTask.Description;
+            var createdToDoTask = await repository.CreateTask(toDoTask);
+
+            return CreatedAtAction("PostToDoTask", new { id = toDoTask.Id }, createdToDoTask);
+        }
     }
 }

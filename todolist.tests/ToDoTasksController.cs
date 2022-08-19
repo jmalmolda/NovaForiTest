@@ -13,7 +13,7 @@ namespace todolist.tests
             // Arrange
             var mockRepo = new Mock<IToDoTaskRepository>();
             mockRepo.Setup(repo => repo.GetTasks())
-                .ReturnsAsync(GetTestSessions());
+                .ReturnsAsync(GetTestTasks());
             var controller = new ToDoTasksController(mockRepo.Object);
 
             // Act
@@ -24,7 +24,27 @@ namespace todolist.tests
             Assert.Equal(2, result.Value.Count());
         }
 
-        private List<ToDoTask> GetTestSessions()
+        [Fact]
+        public async Task PostToDoTask_CallsCreateTaskRepository()
+        {
+            // Arrange
+            var guid = Guid.NewGuid();
+            var inputTask = new ToDoTask()
+            {
+                Description = "New task",
+            };
+
+            var mockRepo = new Mock<IToDoTaskRepository>();
+            var controller = new ToDoTasksController(mockRepo.Object);
+
+            // Act
+            var result = await controller.PostToDoTask(inputTask);
+
+            // Assert
+            mockRepo.Verify(mock => mock.CreateTask(inputTask), Times.Once());
+        }
+
+        private List<ToDoTask> GetTestTasks()
         {
             var tasks = new List<ToDoTask>();
             tasks.Add(new ToDoTask()
