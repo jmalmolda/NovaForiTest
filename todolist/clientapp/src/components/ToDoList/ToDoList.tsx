@@ -21,13 +21,15 @@ const ToDoList: FC<ToDoListProps> = ({taskList}) => {
 const TaskList: FC<ToDoListProps> = ({taskList}) => {
   return (
     <div id="tasks">
-      {taskList.map(task => (
+      {taskList.length > 0 ? taskList.map(task => (
         <div key={task.id} className="task">
           <span id="taskname">
               {task.description}
           </span>
         </div>
-      ))}
+      )): (
+        <div>no tasks yet</div>
+      )}
     </div>
   )
 }
