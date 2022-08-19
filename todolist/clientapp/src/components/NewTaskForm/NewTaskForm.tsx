@@ -1,7 +1,11 @@
 import { FC, useState } from "react"
 import { createNewTask } from "../../api/toDoTasks"
 
-const NewTaskForm: FC = () => {
+interface NewTaskFormProps {
+    onNewTask: () => void
+}
+
+const NewTaskForm: FC<NewTaskFormProps> = ({onNewTask}) => {
     const [description, setDescription] = useState<string>('')
 
     return (
@@ -18,6 +22,8 @@ const NewTaskForm: FC = () => {
                 onClick={
                     async () => {
                         await createNewTask(description)
+                        setDescription('')
+                        onNewTask()
                     }
                 }>
                     Add

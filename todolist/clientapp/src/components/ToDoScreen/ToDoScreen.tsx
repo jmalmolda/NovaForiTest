@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react'
-import { fetchAllTasks, ToDoTask } from '../../api/toDoTasks';
-import NewTaskForm from '../NewTaskForm/NewTaskForm';
-import ToDoList from '../ToDoList/ToDoList';
+import { fetchAllTasks, ToDoTask } from '../../api/toDoTasks'
+import NewTaskForm from '../NewTaskForm/NewTaskForm'
+import ToDoList from '../ToDoList/ToDoList'
 
 const ToDoScreen: FC = () => {
     const [taskList, setTaskList] = useState<ToDoTask[]>([])
@@ -18,7 +18,7 @@ const ToDoScreen: FC = () => {
     return (
         <div className="container">
           <h1>To Do tasks</h1>
-          <NewTaskForm/>
+          <NewTaskForm onNewTask={loadTasks}/>
           <ToDoList taskList={taskList}/>
         </div>
     )
