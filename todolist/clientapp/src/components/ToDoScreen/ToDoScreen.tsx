@@ -16,7 +16,8 @@ const ToDoScreen: FC = () => {
       }, [])    
     return (
         <div className="container">
-            <ToDoList taskList={taskList}/>
+          <h1>To Do tasks</h1>
+          <ToDoList taskList={taskList}/>
         </div>
     )
 }

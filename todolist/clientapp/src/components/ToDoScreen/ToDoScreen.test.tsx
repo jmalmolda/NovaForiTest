@@ -1,9 +1,9 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import ToDoScreen from './ToDoScreen';
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import ToDoScreen from './ToDoScreen'
 
 test('renders learn react link', () => {
   render(<ToDoScreen />);
-  const textElement = screen.getByText(/To Do tasks/i);
-  expect(textElement).toBeInTheDocument();
+  const textTitle = screen.queryByText(/To Do tasks/i)
+  expect(textTitle).toBeInTheDocument() 
 });
